@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DetailMoviePage from "./Pages/DetailMoviePage";
-import HomePage from "./Pages/HomePage";
+import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Pages/Layout";
+import 'antd/dist/antd.css'
 function App() {
   return (
     <div>
