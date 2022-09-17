@@ -4,8 +4,11 @@ import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Pages/Layout";
 import 'antd/dist/antd.css'
+import Spinner from "./Components/Spinner/Spinner";
 function App() {
   return (
+    <>
+    <Spinner/>
     <div>
       <BrowserRouter>
         <Routes>
@@ -29,6 +32,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+    </>
   );
 }
 

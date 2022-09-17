@@ -1,12 +1,25 @@
 import React from "react";
 import Lottie, { useLottie } from "lottie-react";
-import bg_login from "../assets/bg_login.json"
-import { Button, Checkbox, Form, Input } from 'antd';
+import bg_login from "../assets/bg_login.json";
+import { Button, Checkbox, Form, Input, message } from "antd";
+import { setUserLoginActionServ } from "../redux/actions/actionUser";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 export default function LoginPage() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = (values) => {
-    console.log("Success:", values);
-    let {username:taikhoan, password:matkhau} = values;
-
+    let { username: taikhoan, password: matkhau } = values;
+    let onSuccess = () => {
+      message.success("Đăng nhập thành công");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    };
+    let onFail = () => {
+      message.error("Đăng nhập thất bại");
+    };
+    dispatch(setUserLoginActionServ({ taikhoan, matkhau }, onSuccess, onFail));
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -14,7 +27,7 @@ export default function LoginPage() {
   };
   const options = {
     animationData: bg_login,
-    loop: false
+    loop: false,
   };
   console.log(options);
 
@@ -22,7 +35,7 @@ export default function LoginPage() {
   return (
     <div className="container flex items-color">
       <div className="w-1/2 h-1/2">
-        <Lottie animationData={bg_login}/>        
+        <Lottie animationData={bg_login} />
       </div>
       <div className="w-1/2 h-full flex items-center justify-center">
         <Form

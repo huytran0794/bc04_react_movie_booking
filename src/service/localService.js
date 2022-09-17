@@ -7,3 +7,5 @@ const LOCAL_SERVICE = {
         unset: () => localStorage.removeItem(STORAGE_KEY),
     },
 }
+
+export {LOCAL_SERVICE}
